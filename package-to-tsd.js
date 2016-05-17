@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-var fs = require('fs')    
-var execSync = require('exec-sync');
+var fs = require('fs');
+var childProcess = require('child_process');
 
 fs.readFile('package.json', handlePackageJson)
 
 function handlePackageJson(err, data) {
     if (err) throw err
-    obj = JSON.parse(data)
+    var obj = JSON.parse(data)
         
     Object.keys(obj.dependencies).forEach(function(key,index) {                
-        execSync('tsd install ' + key + ' --save');        
+        childProcess.execSync('tsd install ' + key + ' --save');        
     })
 }
