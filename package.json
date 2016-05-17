@@ -1,0 +1,26 @@
+{
+  "name": "package-to-tsd",
+  "version": "0.1.0",
+  "description": "Uses dependencies from package.json to call 'tsd install'. Needs tsd to be installed globally.",
+  "bin": "./package-to-tsd.js",
+  "files": ["package-to-tsd.js"],
+  "dependencies": {
+    "exec-sync":">=0.1.6"
+  },  
+  "keywords": [
+    "auto",
+    "package.json",
+    "tsd",
+    "typescript"
+  ],
+  "repository" :{ 
+    "type" : "git",
+    "url" : "https://github.com/zlash/package-to-tsd.git"
+  },
+  "preferGlobal":true,
+  "bugs":{ 
+    "url" : "https://github.com/zlash/package-to-tsd/issues"
+  },
+  "author": "Miguel Ángel Pérez Martínez",
+  "license": "ISC"
+}
