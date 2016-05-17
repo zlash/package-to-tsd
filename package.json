@@ -5,7 +5,6 @@
   "bin": "./package-to-tsd.js",
   "files": ["package-to-tsd.js"],
   "dependencies": {
-    "exec-sync":">=0.1.6"
   },  
   "keywords": [
     "auto",
