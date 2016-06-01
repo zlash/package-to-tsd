@@ -3,13 +3,20 @@
 var fs = require('fs');
 var childProcess = require('child_process');
 
-fs.readFile('package.json', handlePackageJson)
-
-function handlePackageJson(err, data) {
-    if (err) throw err
-    var obj = JSON.parse(data)
-        
-    Object.keys(obj.dependencies).forEach(function(key,index) {                
-        childProcess.execSync('tsd install ' + key + ' --save');        
+function parsePackageJson(path) {
+    var packageObj = JSON.parse(fs.readFileSync(path+'/package.json'));
+    
+    Object.keys(packageObj.dependencies).forEach(function(key) {   
+       
+        if(packageObj.dependencies[key].substring(0,1)=='/'  || 
+           packageObj.dependencies[key].substring(0,2)=='./' || 
+           packageObj.dependencies[key].substring(0,3)=='../' ) {
+           parsePackageJson(path + '/' + packageObj.dependencies[key]);
+        } else {
+           childProcess.execSync('tsd install ' + key + ' --save');   
+        }
+              
     })
 }
+
+parsePackageJson('.');

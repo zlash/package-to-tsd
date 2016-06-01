@@ -1,6 +1,6 @@
 {
   "name": "package-to-tsd",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Uses dependencies from package.json to call 'tsd install'. Needs tsd to be installed globally.",
   "bin": "./package-to-tsd.js",
   "files": ["package-to-tsd.js"],
